@@ -48,5 +48,21 @@ namespace WebApplication.Controllers
             ViewBag.phones = phoneModel.phones;
             return View("Index");
         }
+
+        [HttpGet]
+        public ActionResult Update(string idSelectedItem) {
+            ViewBag.Id = idSelectedItem;
+            phoneModel = new PhoneModel(Server.MapPath("~/Models/Data.json"));
+            ViewBag.phones = phoneModel.phones;
+            return View();
+        }
+
+        [HttpPost]
+        public ActionResult UpdateSave(PhoneModel id, string surname, string telephone) {
+            phoneModel = new PhoneModel(Server.MapPath("~/Models/Data.json"));
+            phoneBookContext.Update(Guid.Parse(id), surname, telephone);
+            ViewBag.phones = phoneModel.phones;
+            return View("Index");
+        }
     }
 }

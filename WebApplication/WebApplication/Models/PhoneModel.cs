@@ -29,10 +29,9 @@ namespace WebApplication.Models {
                 //здесь должна быть сортировка элементов 
             }
         }
-        public void Add(string surName, string phoneNumber) {
-            Phone phone = new Phone() { Id = Guid.NewGuid(), surName = surName, phoneNumber = phoneNumber };
-            phones.Add(phone);
-            Save();
+        private void Sort() {
+            if (phones?.Any() == true)
+                phones = phones.OrderBy(x => x.surName).ToList();
         }
         private void Save() {
             var serializer = new JsonSerializer();
@@ -40,11 +39,24 @@ namespace WebApplication.Models {
                 serializer.Serialize(writer, phones);
             }
         }
+        public void Add(string surName, string phoneNumber) {
+            Phone phone = new Phone() { Id = Guid.NewGuid(), surName = surName, phoneNumber = phoneNumber };
+            phones.Add(phone);
+            Save();
+        }
         public void Delete(Guid id) {
             var person = phones.FirstOrDefault(x => x.Id == id);
             if (person == null)
                 return;
             phones.Remove(person);
+            Save();
+        }
+        public void Update(Guid id, string surname, string telephone) {
+            var person = phones.FirstOrDefault(x => x.Id == id);
+            if (person == null)
+                return;
+            person.surName = surname;
+            person.phoneNumber = telephone;
             Save();
         }
     }
