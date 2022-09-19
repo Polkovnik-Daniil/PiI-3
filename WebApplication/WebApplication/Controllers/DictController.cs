@@ -23,18 +23,30 @@ namespace WebApplication.Controllers
         //вызывается этот метод, он в свою
         //очередить методом View вызывает
         //страницу Add, та в совю очередь
-        //вызовет метод обработки AddSave()
+        //вызовет метод обработки MAdd()
         [HttpGet]
         public ActionResult Add() {
             return View();
         }
         [HttpPost]
-        public ActionResult MAdd(string surName, string phoneNumber) {
+        public ActionResult AddSave(string surName, string phoneNumber) {
             phoneModel = new PhoneModel(Server.MapPath("~/Models/Data.json"));
             phoneModel.Add(surName, phoneNumber);
             ViewBag.phones = phoneModel.phones;
             return View("Index");
         }
+        [HttpGet]
+        public ActionResult Delete(string delSelectedItem) {
+            ViewBag.Id = delSelectedItem;
+            return View();
+        }
 
+        [HttpPost]
+        public ActionResult DeleteSave(string id) {
+            phoneModel = new PhoneModel(Server.MapPath("~/Models/Data.json"));
+            phoneModel.Delete(Guid.Parse(id));
+            ViewBag.phones = phoneModel.phones;
+            return View("Index");
+        }
     }
 }

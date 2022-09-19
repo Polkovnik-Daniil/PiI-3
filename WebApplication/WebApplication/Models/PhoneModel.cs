@@ -40,5 +40,12 @@ namespace WebApplication.Models {
                 serializer.Serialize(writer, phones);
             }
         }
+        public void Delete(Guid id) {
+            var person = phones.FirstOrDefault(x => x.Id == id);
+            if (person == null)
+                return;
+            phones.Remove(person);
+            Save();
+        }
     }
 }

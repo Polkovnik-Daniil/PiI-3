@@ -112,6 +112,7 @@
     <Content Include="Views\HW\Index.cshtml" />
     <Content Include="Views\Dict\Index.cshtml" />
     <Content Include="Views\Dict\Add.cshtml" />
+    <Content Include="Views\Dict\Delete.cshtml" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>
