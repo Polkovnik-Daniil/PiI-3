@@ -16,12 +16,15 @@
             <td>Select</td>
             <td>Surname</td>
             <td>Telephone number</td>
+            <td>ID</td>
+
         </tr>
         @foreach (var item in ViewBag.phones) {
             <tr>
                 <td><input type="radio" name="a" id="@item.Id" onchange="change()" /></td>
                 <td>@item.surName</td>
                 <td>@item.phoneNumber</td>
+                <td>@item.Id</td>
             </tr>
          }
     </table>
