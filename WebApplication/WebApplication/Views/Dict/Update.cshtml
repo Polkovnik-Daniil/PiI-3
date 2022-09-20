@@ -1,0 +1,18 @@
+﻿
+@{
+    ViewBag.Title = "Update";
+    Layout = null;
+}
+@foreach (var item in ViewBag.phones) {
+    if (item.Id == Guid.Parse(ViewBag.Id)) {
+        <form method="post" action="~/Dict/UpdateSave">
+            <input type="hidden" id="id" name="id" value="@ViewBag.Id" />
+            <input type="text" id="surname" name="surname" value="@item.surName" />
+            <input type="text" id="phoneNumber" name="phoneNumber" value="@item.phoneNumber" />
+            <input type="submit" value="Save" />
+        </form>
+    }
+}
+
+
+

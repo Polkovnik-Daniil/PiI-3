@@ -113,6 +113,7 @@
     <Content Include="Views\Dict\Index.cshtml" />
     <Content Include="Views\Dict\Add.cshtml" />
     <Content Include="Views\Dict\Delete.cshtml" />
+    <Content Include="Views\Dict\Update.cshtml" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>

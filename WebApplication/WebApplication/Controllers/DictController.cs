@@ -58,9 +58,9 @@ namespace WebApplication.Controllers
         }
 
         [HttpPost]
-        public ActionResult UpdateSave(PhoneModel id, string surname, string telephone) {
+        public ActionResult UpdateSave(string id, string surname, string phoneNumber) {
             phoneModel = new PhoneModel(Server.MapPath("~/Models/Data.json"));
-            phoneBookContext.Update(Guid.Parse(id), surname, telephone);
+            phoneModel.Update(Guid.Parse(id), surname, phoneNumber);
             ViewBag.phones = phoneModel.phones;
             return View("Index");
         }
